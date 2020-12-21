@@ -55,7 +55,7 @@ services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 在某些情况下，其他扩展方法会自动调用 `AddAuthentication`。 例如，在使用 [ASP.NET Core Identity](xref:security/authentication/identity) 时，会在内部调用 `AddAuthentication`。
 
-通过在应用的 `IApplicationBuilder` 上调用 <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> 扩展方法，在 `Startup.Configure` 中添加身份验证中间件。 如果调用 `UseAuthentication`，会注册使用之前注册的身份验证方案的中间节。 请在依赖于要进行身份验证的用户的所有中间件之前调用 `UseAuthentication`。 如果使用终结点路由，则必须按以下顺序调用 `UseAuthentication`：
+通过在应用的 `IApplicationBuilder` 上调用 <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> 扩展方法，在 `Startup.Configure` 中添加身份验证中间件。 如果调用 `UseAuthentication`，会注册使用之前注册的身份验证方案的中间件。 请在依赖于要进行身份验证的用户的所有中间件之前调用 `UseAuthentication`。 如果使用终结点路由，则必须按以下顺序调用 `UseAuthentication`：
 
 * 在 `UseRouting`之后调用，以便路由信息可用于身份验证决策。
 * 在 `UseEndpoints` 之前调用，以便用户在经过身份验证后才能访问终结点。
